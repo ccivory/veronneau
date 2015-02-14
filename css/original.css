@@ -1,0 +1,622 @@
+/* OVERLAY template stylesheet
+graphic design, interactive design, coding: Andrew Tay (www.andrewtay.com) October 2009
+- revised November 2009 so that background image is now aligned to top of the viewport (before, it
+centered on the upper-middle area of the image.
+Known issues (all minor):
+- IE6/7: inserts extra space at the end of the line on the right-justified band name
+- Opera9.6: horizontal scroll bar magically appears when a flyout menu is hovered, due to #navigation
+expanding (inexplicably). Can be corrected by using overflow-x: hidden, but this causes repainting
+problems on the .subnav. Opera, usually reliable, is behaving a lot like IE6
+VARIATION FILE: all unique colors and images for this variation are given at the end of the file for
+ease of maintenance, overriding earlier settings.
+*/
+/* --- GLOBAL PAGE SETTINGS ------------------------------------------------------------ */
+html, body, div, form {margin: 0; padding: 0} /* clears block margins/padding */
+img {border: none;} /* clears all image borders */
+/* (mostly) firefox defaults, for other browser's benefit */
+p, blockquote {margin: 1em 0;}
+ul, ol {margin: 1em 0 1em 35px; padding: 0;}
+h2 {margin: .83em 0;}
+h3 {margin: 1em 0;}
+/* --- GENERAL PAGE LAYOUT -------------------------------------------------------------- */
+html, body {
+height: 100%;
+text-align: left;
+}
+/* Ultra-Safe Hack for IE6: hides vertical scrollbar except when absolutely necessary */
+* html, * body {
+_overflow-y: auto; /* this gave IE7 serious problems upon resize, hence the hack for ie6 only */
+}
+/* This is the full page BG image: standard dimensions should be 1440px x 1080px to cover most monitors,
+though the image will tile so users can use smaller (or larger) images. */
+html {
+background-color: #666;
+background: url('images/v_postgig.jpg') center top;
+}
+/* ACCESSIBILITY */
+#accessibility {
+height: 3%; /* this acts as a top margin for #container */
+text-indent: -9999px;
+}
+/* CONTAINER */
+#container {
+position: relative; /* reference for #emailsignup */
+height: 94%; /* content references this to calculate its height */
+margin: 0 20px;
+overflow: auto;
+}
+/* Ultra-Safe Hacks for IE6 and IE7: this prevents a bug where the nav links would shift around when
+hovered, due to some bad interaction between the #container floating scroll bar effect and the
+opacity filters on the links. Was overflow-y: auto, but now we're forcing a permanent scroll bar,
+which IE users should be used to anyway. */
+* html #container {*overflow-y: scroll;}
+*:first-child+html #container {*overflow-y: scroll;}
+/* Since we're using transparency filters, these parent divs MUST be positioned or else the links
+won't work in IE6. Alternatively, these may be overridden by position: absolute; later. */
+#navigation, #content {
+position: relative;
+}
+/* NAVIGATION */
+#navigation {
+width: 600px;
+left: 50%;
+margin: 0 0 2em -150px;
+z-index: 900;
+}
+#navigation ul {
+margin: 0;
+font: bold 20px Arial, Helvetica, sans-serif;
+list-style: none;
+}
+#navigation li {
+display: inline;
+padding-right: 0.33em;
+}
+#navigation li a {
+line-height: 1.66em;
+padding: 2px 0;
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+*filter: alpha(opacity=70);
+opacity: 0.70;
+*zoom: 1; /* IE 6/7 needs this for opacity... though it does increase line spacing */
+}
+#navigation li a:hover {
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+*filter: alpha(opacity=85);
+opacity: 0.85;
+}
+/* EMAIL SIGNUP */
+/* This would look much better placed below the band name, but due to source order, there's no way to get
+it to flow properly for short/long band names. Alas... */
+#emailsignup {
+position: absolute;
+top: 0.2em;
+left: 0px;
+width: 200px;
+height: 60px;
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=55)";
+*filter: alpha(opacity=55);
+opacity: 0.55;
+}
+#emailsignup:hover {
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+*filter:alpha(opacity=80);
+opacity: 0.80;
+}
+#emailsignup form {
+width: 200px; /* true #emailsignup width */
+}
+* html #emailsignup form {
+_position: absolute; /* ie6 needs this for the form to work */
+_filter: alpha(opacity=70); /* position: absolute kills opacity. this replaces it */
+}
+/* BANNER */
+#banner {
+position: relative; /* reference for #banner .photo and .band */
+height: 0; /* prevents #banner from taking up any space right half of layout */
+margin-right: 50%;
+padding-right: 180px; /* helps set the .band span offset for IE6 only. no effect on other browsers */
+}
+/* Ultra-Safe Hack for IE6: corrects slight offset */
+* html #banner {
+left: 10px;
+}
+#banner .photo {
+position: absolute;
+top: 10px;
+right: 190px; /* 180px offset to the left + 10px for border */
+width: 150px;
+height: 150px;
+background: url(/images/edited_veronneau033_resized-cropped-squarephoto.jpg) center center no-repeat;
+}
+#banner .photo span {
+display: block;
+position: absolute;
+left: -10px; /* this accounts for border width */
+top: -10px; /* this accounts for border width */
+width: 150px;
+height: 150px;
+border: 10px solid white;
+text-indent: -9999px;
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=62)";
+*filter:alpha(opacity=62);
+opacity: 0.62;
+}
+#banner .band {
+position: absolute;
+top: 170px;
+right: 160px; /* 160px + 22px padding = 182px offset to the left for span text */
+padding-bottom: 20px; /* this protects letters from being cut-off (especially in ie) */
+padding-right: 22px; /* this protects letters from being cut-off */
+max-width: 450px;
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)";
+*filter:alpha(opacity=65);
+opacity: 0.65;
+font: bold 79px Arial, Helvetica, sans-serif;
+letter-spacing: -7px;
+text-transform: lowercase;
+line-height: 0.8;
+text-align: right;
+}
+/* Ultra-Safe Hack for IE6: corrects strange bug where it incorrectly assumed a narrow fixed width */
+* html #banner .band {
+_width: 100%;
+}
+#banner .band span {
+}
+/* Ultra-Safe Hack for IE7 only: IE7 also calculates the width of #banner .band incorrectly, but
+differntly from IE6. Width should automatically be = #banner width - 182px, but IE gives it a fixed
+width based on who knows what. This achieves a similar effect by making #banner .band the full width
+and then taking 182px off of #banner .band span */
+*:first-child+html #banner .band {
+*width: 100%;
+*max-width: 632px; /* normal 450px + 182px offset */
+}
+*:first-child+html #banner .band span {
+*display: inline-block;
+*margin: 0 -22px -0.23em 0;
+*padding: 0 22px 20px 182px;
+}
+/* CONTENT */
+#content {
+width: 600px;
+left: 50%;
+margin-left: -150px;
+top: -2px /* improves alignment with band photo */
+}
+/* FOOTER */
+#footer {
+position: relative;
+width: 600px;
+left: 50%;
+margin: 2em 0 1em -150px;
+}
+/* --- Text Styles & Minor Placement Adjustments ------------------------------- */
+body {
+color: white;
+font: 15px Arial, Helvetica, sans-serif;
+line-height: 1.33;
+}
+/* transparencies */
+h2, .music h3, .products h3,
+#calendar .entry h4, .photos dt,
+#footer p {
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+*filter:alpha(opacity=70);
+opacity: 0.70;
+*zoom: 1;
+}
+/* causes top of all elements within #content to line up with top of #navigation */
+#content p,
+#content h2, #content h3, #content h4,
+#content ul, #content ol, #content dl, #content li, #content dt,
+#content form, #content img, #content blockquote,
+#content .entry, #content .details, #content .notes, #content .contact {
+margin-top: 0;
+}
+/* alignment tweaking (in conjuction with -ve margin-top on empty h1) */
+#content h3 {margin-top: 2px;}
+#content p {margin-top: 3px;}
+#content blockquote {margin-top: 3px;}
+#content dl {margin-top: 3px;}
+#content .entry {margin-top: 1px;}
+.home #content img {margin-top: 7px;}
+.photos #content dl {margin-top: 2px;}
+#calendar {padding-top: 7px;}
+h1 {
+height: 1px;
+margin: 0 0 -7px 0;
+}
+h1 span {display: none;}
+h2, .music h3, .products h3 { /* chosen to style these h3s like h2s */
+font-size: 1.5em;
+letter-spacing: -1px;
+margin-bottom: 0.33em;
+}
+/* Making these h2s & h3s smaller since they can appear several times on each page */
+#calendar h2, .links h2, .press h2, .news h2, .music h3, .products h3, #guestbook .entry h2 {
+font-size: 1.33em;
+}
+h3 {
+font-size: 1em;
+margin-bottom: 0.33em;
+}
+p {margin-bottom: 1em;}
+blockquote {margin-bottom: 0.33em;}
+address {font-style: normal;}
+ul, ol, dd {
+margin-left: 30px;
+}
+/* Ultra-Safe Hacks for IE6/7: There was a very strange bug where IE wouldn't collapse the bottom margins
+of these lists, except when the last couple of list items that contained links were hovered--and even
+then, it only happened when the a:hover background image was changed. Very weird. Fixed by removing the
+bottom margin and adding a token 1px of padding. Don't ask why. */
+* html #content ul, * html #content ol, * html #content dl {
+_margin-bottom: 0 !important;
+_padding-bottom: 1px;
+}
+/* Ultra-Safe Hack for IE7: */
+*:first-child+html #content ul, *:first-child+html #content ol, *:first-child+html #content dl {
+*margin-bottom: 0 !important;
+*padding-bottom: 1px;
+}
+/* .entry appears in: .contact, .bio, #calendar, .press, .news, .guestbook */
+.entry {
+margin-bottom: 1.66em;
+}
+/* .details appears in: #calendar (as a child of .entry), #music, #products */
+.entry .details {
+margin-bottom: 1.66em;
+}
+/* .caption appears in: 1) .press (child of .entry), 2) .products & .music (child of .details, not .entry) */
+.caption {
+margin-bottom: 1em;
+}
+.press .entry .caption {
+text-align: right;
+margin-right: 75px;
+font-style: italic;
+}
+/* .notes appears in .news only. Strangely, it uses hard-coded <br/> and offers little control */
+.notes br {line-height: 1em;} /* slight tweak--doesn't work in WebKit */
+#footer p {
+font-weight: bold;
+margin: 0 0 1px 0;
+}
+/* --- Link Styling & Form Elements ------------------------------------------------ */
+/* general links */
+a {
+font-weight: bold;
+text-decoration: none;
+border-bottom: 1px solid #aaa; /* should be darker than text color */
+background: url('/shared/overlay/black25.png');
+}
+/* Ultra-Safe Hack for IE6: replaces alpha-transparent PNG with transparent GIF */
+* html a {
+_background: none;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/shared/overlay/black25.png', sizingMethod='scale');
+_zoom: 1; /* IE6 needs hasLayout for the filter to work */
+}
+/* Ultra-Safe Hack for IE6: gets rid of transparent PNG filter on anything with opacity filter */
+* html h3 a, * html h3 a:hover {
+_filter: none; /* IE can't handle both filters on the same element */
+}
+/* Ultra-Safe Hack for IE7: gets rid of transparent PNG on anything with opacity filter */
+*:first-child+html h3 a {
+*background: none; /* IE can't handle the filter and the PNG on the same element */
+}
+a:link {color: #ccc;}
+a:visited {color: #ccc;}
+a:hover {color: #eee; background: url('/shared/overlay/black35.png');}
+a:active {color: #fff;}
+/* Ultra-Safe Hack for IE6: replaces alpha-transparent PNG with transparent GIF */
+* html a:hover {
+_background: none;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/shared/overlay/black35.png', sizingMethod='scale');
+}
+h3 a:link {color: #fff;} /* reverts h3 links back to normal h3 color */
+h3 a:visited {color: #fff;}
+h3 a:hover {color: #eee;}
+h3 a:active {color: #ccc;}
+/* navigation links */
+#navigation li a {border: none; text-decoration: none; background: none;}
+#navigation li a:link {color: #fff;}
+#navigation li a:visited {color: #fff;}
+#navigation li a:hover {color: #fff;}
+#navigation li a:active {color: #ccc;}
+/* highlight current page */
+#navigation li a.highlight {
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+*filter:alpha(opacity=95);
+opacity: 0.95;
+}
+/* email signup form elements */
+#emailsignup form {
+font: bold 15px Arial, Helvetica, sans-serif;
+}
+/* this affects both the entry box and the button */
+#emailsignup input {
+width: 43px;
+}
+/* this is the entry box */
+#emailsignup input#list_email {
+border: none;
+width: 100px;
+height: 1.33em; /* 1.33em = 18px? */
+margin-right: 5px;
+padding: 1px 3px;
+color: #333;
+background: #fff;
+}
+/* --- ADDITIONAL PAGE-SPECIFIC STYLES ---------------------------------------------------------------------- */
+/* SPLASH */
+#splashimage {text-align: center; margin: 100px auto;}
+#splashimage a img {border: 0;}
+/* HOME */
+.home img {display: block; margin: 1em 0;}
+/* CONTACT */
+.contact .name {font-weight: bold;}
+.contact .entry ul {list-style: none;}
+/* CALENDAR */
+#calendar .entry {
+padding: 1.33em 0 0 0;
+margin: 0 0 1.33em 0;
+border-top: 1px solid #fff;
+}
+/* Ultra-Safe Hack for IE6: gives hasLayout, curing a border rendering bug */
+* html #calendar .entry {
+_height: 1px; /* doesn't affect layout since IE6 treats this as min-height */
+}
+#calendar .entry .details {
+margin: 1em 0 1em 30px;
+}
+#calendar .entry .details h4 {
+font-size: 1em;
+margin-bottom: 0; /* was 0.33em; */
+}
+/* LINKS */
+.links dl {margin-bottom: 2em;}
+/* Ultra-Safe Hacks for IE6 & IE7: replace margin-bottom with padding-bottom, avoiding disappearing
+margin bug when links are hovered. */
+* html .links dl {_padding-bottom: 2em;}
+*:first-child+html #content dl {*padding-bottom: 2em;}
+/* PRESS */
+/* NEWS */
+.news .entry {margin-bottom: 2em;}
+/* PHOTOS */
+.photos dt {
+font-weight: bold;
+font-size: 1.166em;
+margin-bottom: 0.66em;
+}
+.photos dd {
+margin: 0 0 1.66em 0;
+padding: 0;
+}
+/* PRODUCTS */
+.products .details {
+margin-bottom: 2em;
+}
+.products .details dl {
+margin-bottom: 0;
+}
+/* MUSIC */
+.music .details {
+margin-bottom: 2em;
+}
+.music .details .artist {font-weight: bold;}
+.music .details .caption {margin-bottom: 0;}
+.music .details ul {margin-top: 0.33em !important; list-style: none;}
+/* GUESTBOOK */
+/* transparencies */
+#postForm label, #postForm input, #postForm textarea, #postForm img {
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+*filter: alpha(opacity=70);
+opacity: 0.70;
+*zoom: 1; /* gives hasLayout to IE 6/7, needed for transparency */
+}
+#postForm input:focus, #postForm textarea:focus, #postForm input[type="submit"]:hover {
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)" !important;
+*filter: alpha(opacity=80) !important;
+opacity: 0.80 !important;
+}
+/* guestbook entry form */
+#postForm {
+margin: 3px 0 30px 0;
+}
+/* Ultra-Safe Hacks for IE6: prevents #postForm and comments from jumping down on very narrow screens. Not
+stricly necessary, but it helps. */
+* html #postForm {
+_position: absolute;
+_top: -6px;
+}
+* html .guestbook h1 {
+_margin-bottom: 365px;
+}
+#postForm label {
+display: block;
+font-weight: bold;
+}
+/* this affects both the entry boxes and the button */
+#postForm input {
+width: 300px;
+}
+/* this affects entry boxes only */
+#postForm input#gbname,
+#postForm input#gbaddress,
+#postForm input#security_code,
+#postForm textarea {
+display: block;
+width: 390px;
+border: none;
+margin-bottom: 15px;
+padding: 2px 5px;
+color: #333; /* overrides previous settings */
+background: white; /* overrides previous settings */
+font: 1em Arial, Helvetica, sans-serif; /* overrides previous settings */
+}
+/* this affects the textarea box only */
+#postForm textarea {
+height: 100px;
+margin-bottom: 0 !important; /* forces browser constistency */
+overflow-y: auto; /* auto-hides scrollbar in ie */
+}
+/* captcha image */
+#postForm #gbimage {
+position: absolute;
+margin-top: 15px; /* replaces lost margin-bottom from #gbcomment */
+}
+/* captcha "security code" text label */
+#postForm label.security_code_label {
+margin-top: 15px; /* replaces lost margin-bottom from #gbcomment */
+margin-left: 120px;
+}
+/* captcha entry box */
+#postForm input#security_code {
+width: 270px !important;
+margin-left: 120px;
+}
+/* previous guestbook entries */
+#guestbook .entry {
+padding: 2px 0;
+margin-bottom: 1em;
+}
+#guestbook .entry h2 {
+font-size: 1.166em;
+padding-bottom: 4px;
+margin-bottom: 0;
+border-bottom: 1px solid #fff;
+}
+#guestbook .entry h3 {
+margin-bottom: 0.33em;
+font-size: 1em;
+text-align: right;
+}
+/* --- FLYOUT SUB-MENUS ------------------------------------------------------------------------------------- */
+/* --- Resets for Sub-Navigation (Flyouts) --- */
+/* Resets subnav ul to defaults. Added "body" in front to increase
+specificity and reduce cascade problems. */
+body #navigation ul.subnav, body #navigation ul.subnav li, body #navigation ul.subnav li a {
+width: auto; height: auto;
+min-width: 0; min-height: 0; max-width: none; max-height: none;
+margin: 0; padding: 0; border: none; background: none;
+text-align: left;
+line-height: 1;
+}
+/* --- Changes to Main Navigation --- */
+#navigation ul#navlist li {
+position: relative; /* used as a reference for subnav */
+_width: 100%; /* gives hasLayout to IE6, preventing more spacing problems */
+}
+/* Flyout Arrows */
+#navigation ul#navlist li.hasflyout a span {
+padding-right: 13px;
+background: url(/shared/overlay/downarrow-white.gif) right 11px no-repeat !important;
+}
+/* Hover Highlight/Layering */
+#navigation ul#navlist li:hover,
+#navigation ul#navlist li.sfhover {
+z-index: 999; /* forces submenu to overlap all of the main navigation links and #emailsignup */
+}
+/* Ultra-Safe Hacks for IE6 and IE7: this eliminates strange gap that appears when a li in the main nav
+has a subnav that also has li in it. The margin is reduced using ems because the size of the gap
+depends on the font size used in the main nav. */
+* html #navigation ul#navlist li.hasflyout {*margin-bottom: -0.23em;}
+/* *:first-child+html #navigation ul#navlist li.hasflyout {*margin-bottom: -0.23em;} not needed this time */
+/* --- Positioning and Hover Effect for Sub-Navigation (Flyouts) --- */
+/* For some reason, Opera 9.6 has serious issues with having position: absolute on the .subnav and
+display: inline on the original list items, #navigation li. In addition to expanding navigation
+horizontally and creating a horizontal scroll bar when hovered, there are repainting problems on all
+list-items & links. */
+#navigation li ul.subnav {
+display: none; /* choosing to use the "none/block" technique only because Opera 9.6 chokes */
+position: absolute;
+z-index: 999;
+/* top: -9999px; /* hides menu offscreen when it isn't being hovered (better accessibility) */
+/* right: 9999px; /* hides menu offscreen when it isn't being hovered (better accessibility) */
+width: 200px;
+padding: 0;
+}
+#navigation li:hover ul.subnav,
+#navigation li.sfhover ul.subnav {
+display: block; /* choosing to use the "none/block" technique only because Opera 9.6 chokes */
+top: 1.1em; /* causes subnav to appear on hover (it's critical that there's no gap) */
+left: 0px; /* causes subnav to appear on hover (it's critical that there's no gap) */
+}
+/* Ultra-Safe Hacks for IE6 and IE7: for some reason, IE shifts the flyouts up. This code shifts them
+back down. */
+* html #navigation li.sfhover ul.subnav {*margin-top: 0.33em;}
+*:first-child+html #navigation li:hover ul.subnav {*margin-top: 0.33em;}
+/* --- Styling for Sub-Navigation (Flyouts) --- */
+#navigation li ul.subnav li {
+display: block; /* this layout needs this, since parent li is now inline */
+border-top: 1px solid #4a4a4a; /* solid looks better with this layout */
+font-size: 1px; /* this odd bit of code prevents IE 6/7 from inserting extra space below li */
+}
+#navigation li ul.subnav li:first-child {
+border-top: none;
+}
+#navigation li ul.subnav li a {
+display: block;
+padding: 6px 7px;
+font-size: 14px;
+font-weight: bold;
+color: #4a4a4a;
+background: #ccc;
+/* cross-browser opacity settings */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=92)" !important;
+*filter: alpha(opacity=92) !important;
+opacity: .92 !important;
+*zoom: 1;
+}
+#navigation ul.subnav li a:hover {color: #ccc; background: #4a4a4a;}
+/* --- VARIATION -------------------------------------------------------------------------------------------- */
+/* ---- CODE ------------------------------------------------------------------------------------------------ */
+/* overlay color */
+body {
+background: url(images/ol-greystrong.png);
+}
+* html body {_background: none;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/shared/overlay/ol-greystrong.png', sizingMethod='scale');
+}
+/* --- Link Styling & Form Elements ------------------------------------------------ */
+/* general links */
+a {border-color: #a39b95; background: url('/shared/overlay/black15.png');} /* band name -10% brightness */
+a:link {color: #bbbabe;} /* color source: band name (over overlay over ~50% grey) */
+a:visited {color: #bbbabe;} /* color source: band name */
+a:hover {color: #dedee0; background: url('/shared/overlay/black25.png');} /* from hovered emailsignup */
+a:active {color: #fff;}
+/* Ultra-Safe Hacks for IE6: replaces alpha-transparent PNG with transparent GIF */
+* html a {_background: none;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/shared/overlay/black15.png', sizingMethod='scale');
+}
+/* Ultra-Safe Hack for IE6: replaces alpha-transparent PNG with transparent GIF */
+* html a:hover {_background: none;
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/shared/overlay/black25.png', sizingMethod='scale');
+}
+h3 a:link {color: #fff;} /* reverts h3 links back to normal h3 color */
+h3 a:visited {color: #fff;}
+h3 a:hover {color: #dedee0;} /* color source: hovered #emailsignup box */
+h3 a:active {color: #bbbabe;} /* color source: band name */
+/* navigation links */
+#navigation li a:link {color: #fff;}
+#navigation li a:visited {color: #fff;}
+#navigation li a:hover {color: #fff;}
+#navigation li a:active {color: #bbbabe;} /* color source: band name */
+/* --- Styling for Sub-Navigation (Flyouts) ------------------------------------------ */
+#navigation li ul.subnav li {border-color: #35343b;} /* color source: shadow (simply overlay over black) */
+#navigation li ul.subnav li a {color: #35343b; background: #bbbabe;} /* from shadow/band name */
+#navigation li ul.subnav li a:hover {color: #bbbabe; background: #35343b;} /* from band name/shadow */
+body.flash_player_frame {
+_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader.Enabled=false;
+}

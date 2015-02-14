@@ -1,0 +1,78 @@
+/* 
+
+This is what the footer_totop should look like: 	
+
+	<div id="footer">
+			<a href="#" class="page-top">top</a>
+			<div class="footer_column">
+				<p>Designer - CCIVORY<br>
+				2015</p>
+			</div><!--designer-->
+			<div class="footer_column">
+				<p>contact info<br>
+				ccalzone7@gmail.com.</p>
+			</div><!--contact info-->
+		</div><!--footer-->
+		
+*/
+
+#footer {
+	background: #333;
+	color: white;
+	margin-top: 2em;
+	height: 10em;
+}
+
+.footer_column {
+	float: left;
+	margin-bottom: 2em;
+	text-align: center;
+	width: 49.6%;
+	border-right: 1px solid #666;
+}
+
+.page-top {
+	display: block;
+	width:4em;
+	height:4em;
+	border-radius:2em;
+	font-size: 1em;
+	color:gray;
+	line-height:4em;
+	text-align:center;
+	text-decoration:none;
+	background:#fff;
+	position: relative;
+	top: -1.75em;
+	margin: 0 auto;
+}
+
+.page-top:hover {
+	color: #fff;
+	text-decoration: none;
+	background:gray;
+}
+
+/* ------------------------------------------- MEDIA QUERIES 
+
+----------------------------------------------------------*/
+
+@media screen and (max-width: 480px) {
+	.footer_column {
+		width: 100% !important;
+		margin-left: 0 !important;
+		clear: none !important;
+		font-size: 1.5em;
+		transition: font 1s ease-in-out, margin 1s ease-in-out, width 1s ease-in-out, center 1s ease-in-out;
+	}
+	
+	.footer_column {
+		border-right: 0px solid #666;
+		border-bottom: 1px solid #666;
+		padding-bottom: 0em;
+	}
+}
+
+
+
+

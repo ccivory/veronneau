@@ -1,0 +1,261 @@
+/* 
+
+This is how the slider should look on the page:
+
+		<ul id="slideshow">
+				<li><span>image01</span><div><h1>Multiple</h1></div></li>
+				<li><span>image02</span><div><h1>Things</h1></div></li>
+				<li><span>image03</span><div><h1>Multiple</h1></div></li>
+				<li><span>image04</span><div><h1>Multiple</h1></div></li>
+				<li><span>image05</span><div><h1>Multiple</h1></div></li>
+		</ul>
+
+*/
+
+#slideshow,
+#slideshow:after { /* positions both the pictures and the overlay */ 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 0; 
+}
+
+/* #slideshow:after {
+	content: '';
+	background: transparent url('http://fc04.deviantart.net/fs71/i/2013/136/3/e/free_hexagon_pattern_02_by_black_light_studio-d65g32i.png') repeat top left;
+	background-size: 15%;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+} */
+	
+#slideshow li span {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: none;
+    opacity: 0;
+		filter: alpha(opacity=0);
+    z-index: 0;
+		-webkit-backface-visibility: hidden;
+		-webkit-animation: imageAnimation 60s linear infinite 0s;
+		-moz-animation: imageAnimation 60s linear infinite 0s;
+		-o-animation: imageAnimation 60s linear infinite 0s;
+		-ms-animation: imageAnimation 60s linear infinite 0s;
+    animation: imageAnimation 60s linear infinite 0s; 
+}
+
+#slideshow li div { 
+    z-index: 1000;
+    position: absolute;
+    bottom: 30px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+		filter: alpha(opacity=0);
+    color: white;
+		-webkit-animation: titleAnimation 60s linear infinite 0s;
+		-moz-animation: titleAnimation 60s linear infinite 0s;
+		-o-animation: titleAnimation 60s linear infinite 0s;
+		-ms-animation: titleAnimation 60s linear infinite 0s;
+    animation: titleAnimation 60s linear infinite 0s; 
+}
+
+#slideshow li div h1 {
+    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+    font-size: 233px;
+    padding: 0;
+    line-height: 300px;
+}
+
+#slideshow li div h2 {
+    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+    font-size: 34px;
+    padding: 0;
+    line-height: 200px;
+}
+
+/* This is how it goes: write out the span and the nth-child(n) span however many images to include. Then, do the same thing for the divs */
+
+#slideshow li:nth-child(1) span {
+	background-image: url('../images/Lion.jpg');
+}
+#slideshow li:nth-child(2) span {
+	background-image: url('../images/dog1.jpg');
+	-webkit-animation-delay: 15s;
+    -moz-animation-delay: 15s;
+    -o-animation-delay: 15s;
+    -ms-animation-delay: 15s;
+    animation-delay: 15s;
+}
+
+#slideshow li:nth-child(3) span {
+	background-image: url('../images/landscape1.jpg');
+	-webkit-animation-delay: 25s;
+    -moz-animation-delay: 25s;
+    -o-animation-delay: 25s;
+    -ms-animation-delay:25s;
+    animation-delay: 25s;
+}
+
+#slideshow li:nth-child(4) span {
+	background-image: url('../images/landscape2.jpg');
+	-webkit-animation-delay: 35s;
+    -moz-animation-delay: 35s;
+    -o-animation-delay: 35s;
+    -ms-animation-delay: 35s;
+    animation-delay: 35s;
+}
+
+#slideshow li:nth-child(5) span {
+	background-image: url('../images/landscape3.jpg');
+    -webkit-animation-delay: 45s;
+    -moz-animation-delay: 45s;
+    -o-animation-delay: 45s;
+    -ms-animation-delay: 45s;
+    animation-delay: 45s;
+}
+
+/* -----------------------------------------------------------NOW FOR THE CAPTIONS */
+
+#slideshow li:nth-child(2) div { 
+	-webkit-animation-delay: 15s;
+    -moz-animation-delay: 15s;
+    -o-animation-delay: 15s;
+    -ms-animation-delay: 15s;
+    animation-delay: 15s;
+}
+#slideshow li:nth-child(3) div { 
+	-webkit-animation-delay: 25s;
+    -moz-animation-delay: 25s;
+    -o-animation-delay: 25s;
+    -ms-animation-delay:25s;
+    animation-delay: 25s;
+}
+#slideshow li:nth-child(4) div { 
+	-webkit-animation-delay: 35s;
+    -moz-animation-delay: 35s;
+    -o-animation-delay: 35s;
+    -ms-animation-delay: 35s;
+    animation-delay: 35s;
+}
+#slideshow li:nth-child(5) div { 
+    -webkit-animation-delay: 45s;
+    -moz-animation-delay: 45s;
+    -o-animation-delay: 45s;
+    -ms-animation-delay: 45s;
+    animation-delay: 45s; 
+}
+
+@-webkit-keyframes imageAnimation { 
+    0% { opacity: 0;
+    -webkit-animation-timing-function: ease-in; }
+    8% { opacity: 1;
+         -webkit-animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@-moz-keyframes imageAnimation { 
+    0% { opacity: 0;
+    -moz-animation-timing-function: ease-in; }
+    8% { opacity: 1;
+         -moz-animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@-o-keyframes imageAnimation { 
+    0% { opacity: 0;
+    -o-animation-timing-function: ease-in; }
+    8% { opacity: 1;
+         -o-animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@-ms-keyframes imageAnimation { 
+    0% { opacity: 0;
+    -ms-animation-timing-function: ease-in; }
+    8% { opacity: 1;
+         -ms-animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@keyframes imageAnimation { 
+    0% { opacity: 0;
+    animation-timing-function: ease-in; }
+    8% { opacity: 1;
+         animation-timing-function: ease-out; }
+    17% { opacity: 1 }
+    25% { opacity: 0 }
+    100% { opacity: 0 }
+}
+}
+/* Animation for the title */
+@-webkit-keyframes titleAnimation { 
+    0% { opacity: 0 }
+    8% { opacity: 1 }
+    17% { opacity: 1 }
+    19% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@-moz-keyframes titleAnimation { 
+    0% { opacity: 0 }
+    8% { opacity: 1 }
+    17% { opacity: 1 }
+    19% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@-o-keyframes titleAnimation { 
+    0% { opacity: 0 }
+    8% { opacity: 1 }
+    17% { opacity: 1 }
+    19% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@-ms-keyframes titleAnimation { 
+    0% { opacity: 0 }
+    8% { opacity: 1 }
+    17% { opacity: 1 }
+    19% { opacity: 0 }
+    100% { opacity: 0 }
+}
+@keyframes titleAnimation { 
+    0% { opacity: 0 }
+    8% { opacity: 1 }
+    17% { opacity: 1 }
+    19% { opacity: 0 }
+    100% { opacity: 0 }
+}
+
+
+
+/* Show at least something when animations not supported */
+
+
+@media screen and (min-width: 640px) and (max-width: 1140px) { 
+    #slideshow li div h1 { font-size: 80px }
+}
+
+@media screen and (max-width: 639px) {
+	#slideshow li div h1 { font-size: 50px; line-height: 200px; }
+	#slideshow li div h2 { display: none; }
+}
+
+@media screen and (max-width: 479px) { 
+	#slideshow  {display: none;}
+}
+

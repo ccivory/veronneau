@@ -1,0 +1,91 @@
+/*
+
+JUMBOTRON STYLE 
+
+the idea is you get merch and pictures all-in-one
+
+<!-----------------MERCH VISION --------------------------------------------------------------------------->
+
+	<div id="merch_vision">
+	
+	<div class="merch_head">
+		Buy an Album!
+	</div>
+	
+		<a href="#">
+			<img class="one" src="images/v_cd1.jpg" />
+			<div>How's this stay?</div>
+		</a>
+		
+		<a href="#">
+			<img class="three" src="images/v_cd1.jpg" />
+						<div>How's this stay?</div>
+		</a>
+		
+		<a href="#">
+			<img class="two" src="images/v_cd1.jpg" />
+						<div>How's this stay?</div>
+		</a>
+		
+	</div><!--merch_vision-->
+
+*/
+
+#merch_vision {	
+	height: 400px;
+    width: 100%;
+	overflow: hidden;
+	display: block;
+}
+
+#merch_vision .merch_head {
+	height: auto;
+	width: 100%;
+	background: yellow;
+	display: inline-block;
+	float: left;
+	padding: 10px;
+}
+
+#merch_vision img {
+	border-radius: 50%;
+	width: 30%;
+}
+
+#merch_vision .one {
+	float: left;
+}
+#merch_vision .two {
+	margin: 0 auto;
+}
+#merch_vision .three{
+	float: right;
+}
+
+#merch_vision a div {
+	z-index: 10;
+	height: auto;
+	padding: 10px;
+	position: absolute;
+	
+}
+
+#merch_vision a {
+	opacity: .8;
+	filter: alpha(opacity=.8);
+}
+
+#merch_vision a:hover {
+	opacity: 1;
+	filter: alpha(opacity=1);
+}
+
+
+
+/* 
+-------------------------------------- CHILDREN GET FED -----------------------------------------
+*/
+
+/* 
+---------------------------------------MEDIA QUERIES = WE ALL NEED 'EM -----------------------------------------
+*/
